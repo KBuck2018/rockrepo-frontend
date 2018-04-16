@@ -6,6 +6,8 @@ import Signout from "./components/authentication/Signout";
 import Signup from "./components/authentication/Signup";
 import { Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
+import API_KEY from "./config/Config";
+
 class App extends Component {
   constructor() {
     super();
@@ -18,6 +20,17 @@ class App extends Component {
     this.handleLogIn = this.handleLogIn.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleUserAuth = this.handleUserAuth.bind(this);
+  }
+
+  componentDidMount() {
+    axios
+      .get(
+        "https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=40.03&lon=-105.25&maxDistance=10&minDiff=5.6&maxDiff=5.10&key=" +
+          API_KEY
+      )
+      .then(response => {
+        console.log(response.data);
+      });
   }
 
   handleLogOut() {
