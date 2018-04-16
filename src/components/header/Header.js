@@ -22,7 +22,7 @@ class Header extends Component {
     } else {
       nav.push(
         <div key={2}>
-          <Link to="/" className="logo">
+          <Link to="/login" className="logo">
             I Like Big Routes
           </Link>
           <Link to="/login" className="nav">

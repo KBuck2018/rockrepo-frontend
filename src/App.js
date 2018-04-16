@@ -70,7 +70,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <div>
+        <div className="app">
           <nav>
             <Header
               isLoggedIn={this.state.isLoggedIn}
