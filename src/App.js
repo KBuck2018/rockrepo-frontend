@@ -5,21 +5,77 @@ import Signin from "./components/authentication/Signin";
 import Signout from "./components/authentication/Signout";
 import Signup from "./components/authentication/Signup";
 import { Route, Switch, Redirect } from "react-router-dom";
-
+import axios from "axios";
 class App extends Component {
   constructor() {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      isLoggedIn: false
     };
+    this.handleLogOut = this.handleLogOut.bind(this);
+    this.handleLogIn = this.handleLogIn.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleUserAuth = this.handleUserAuth.bind(this);
   }
+
+  handleLogOut() {
+    this.setState({
+      email: "",
+      password: "",
+      isLoggedIn: false
+    });
+
+    localStorage.clear();
+  }
+
+  handleUserAuth(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+  handleSignUp(e) {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/users/signup", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+        localStorage.token = response.data.token;
+        this.setState({
+          isLoggedIn: true
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleLogIn(e) {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/users/login", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+        localStorage.token = response.data.token;
+        this.setState({
+          isLoggedIn: true
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Switch>
         <div>
           <nav>
-            <Header isLoggedIn={this.state.isLoggedIn} />
+            <Header
+              isLoggedIn={this.state.isLoggedIn}
+              email={this.state.email}
+            />
           </nav>
           <Route
             path="/signup"

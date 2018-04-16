@@ -1,0 +1,25 @@
+.header {
+  background: #eea25c;
+  display: fixed;
+  top: 0px;
+  width: 100%;
+  font-family: "Cute Font", cursive;
+  padding: 20px 15px 10px 15px;
+}
+
+.logo {
+  color: #4d2713;
+  padding: 10px 5px 10px 0;
+  font-size: 36px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav {
+  text-decoration: none;
+  float: right;
+  padding-right: 25px;
+  padding-top: 5px;
+  color: #4d2713;
+  font-size: 28px;
+}

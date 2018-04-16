@@ -9,10 +9,13 @@ class Header extends Component {
       nav.push(
         <div key={1}>
           <Link to="/main" className="logo">
-            Coffee Runs Through Me
+            I Like Big Routes
           </Link>
           <Link to="/logout" className="nav">
             Logout
+          </Link>
+          <Link to="/profile" className="nav">
+            {this.props.email}
           </Link>
         </div>
       );
