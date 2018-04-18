@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import "./Signout.css";
 
 class Signout extends Component {
   render() {
     return (
-      <div>
-        <h1>Logging Out?</h1>
+      <div className="body">
+        <h1>Logging Out</h1>
         <form className="form">
           <input
             className="userForm"

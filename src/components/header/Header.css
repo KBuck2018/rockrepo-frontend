@@ -23,17 +23,3 @@
   color: #4d2713;
   font-size: 28px;
 }
-.app {
-  height: 900px;
-  background-image: url(/images/rock-climbing-hands.jpg);
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  background-position: center;
-}
-.image {
-  display: flex;
-  margin: 0 auto;
-  /* height: 20%; */
-  justify-content: center;
-  align-items: center;
-}

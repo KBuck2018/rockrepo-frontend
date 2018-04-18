@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import "./Signup.css";
 
 class Signup extends Component {
   render() {
     return (
-      <div>
+      <div className="body">
         <h1>Sign Up</h1>
         <form className="form">
           <div>

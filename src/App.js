@@ -1,36 +1,27 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
-import Signin from "./components/authentication/Signin";
-import Signout from "./components/authentication/Signout";
-import Signup from "./components/authentication/Signup";
+import Signin from "./components/signin/Signin";
+import Signout from "./components/signout/Signout";
+import Signup from "./components/signup/Signup";
 import { Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import API_KEY from "./config/Config";
+import Main from "./components/main/Main";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: "",
       password: "",
-      isLoggedIn: false
+      isLoggedIn: false,
+      climbs: []
     };
     this.handleLogOut = this.handleLogOut.bind(this);
     this.handleLogIn = this.handleLogIn.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleUserAuth = this.handleUserAuth.bind(this);
-  }
-
-  componentDidMount() {
-    axios
-      .get(
-        "https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=40.03&lon=-105.25&maxDistance=10&minDiff=5.6&maxDiff=5.10&key=" +
-          API_KEY
-      )
-      .then(response => {
-        console.log(response.data);
-      });
   }
 
   handleLogOut() {
@@ -76,6 +67,19 @@ class App extends Component {
         this.setState({
           isLoggedIn: true
         });
+      });
+  }
+
+  componentDidMount() {
+    axios
+      .get(
+        "https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=40.03&lon=-105.25&maxDistance=10&minDiff=5.6&maxDiff=5.10&key=" +
+          API_KEY
+      )
+      .then(response => {
+        this.setState({
+          climbs: response.data
+        });
       })
       .catch(err => console.log(err));
   }
@@ -83,7 +87,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <div className="app">
+        <div>
           <nav>
             <Header
               isLoggedIn={this.state.isLoggedIn}
@@ -103,7 +107,7 @@ class App extends Component {
                   />
                 );
               } else {
-                return <Redirect to="/" />;
+                return <Redirect to="/main" />;
               }
             }}
           />
@@ -119,7 +123,7 @@ class App extends Component {
                   />
                 );
               } else {
-                return <Redirect to="/" />;
+                return <Redirect to="/login" />;
               }
             }}
           />
@@ -136,7 +140,17 @@ class App extends Component {
                   />
                 );
               } else {
-                return <Redirect to="/" />;
+                return <Redirect to="/main" />;
+              }
+            }}
+          />
+          <Route
+            path="/main"
+            render={props => {
+              if (this.state.isLoggedIn === true) {
+                return <Main climbs={this.state.climbs} />;
+              } else {
+                return <Redirect to="/login" />;
               }
             }}
           />

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./authentication.css";
+import "./Signin.css";
 
 class Signin extends Component {
   render() {
     return (
-      <div>
+      <div className="body">
         <h1>Sign In</h1>
         <form className="form">
           <div>
