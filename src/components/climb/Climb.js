@@ -1,9 +1,26 @@
 import React, { Component } from "react";
 import "./Climb.css";
 import ClimbMap from "../climbmap/ClimbMap";
+import MQ_API_KEY from "../../config/Config2";
+import axios from "axios";
 class Climb extends Component {
+  componentDidMount() {
+    axios
+      .get(
+        "http://www.mapquestapi.com/geocoding/v1/reverse?key=" +
+          MQ_API_KEY +
+          "&location=" +
+          this.props.climbs.climbs.routes[0].latitude +
+          "," +
+          this.props.climbs.climbs.routes[0].longitude +
+          "&includeRoadMetadata=true&includeNearestIntersection=true"
+      )
+      .then(response => {
+        console.log(response.data);
+      });
+  }
+
   render() {
-    console.log(this.props.climbs.climbs.routes);
     const climb = this.props.climbs.climbs.routes.find(
       climb => climb.id === parseInt(this.props.match.params.id)
     );
@@ -13,6 +30,8 @@ class Climb extends Component {
         <br />
         <div className="climb-map-container">
           <ClimbMap
+            lat={this.props.lat}
+            lng={this.props.lng}
             climbLat={climb.latitude}
             climbLon={climb.longitude}
             climbName={climb.name}

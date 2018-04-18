@@ -13,7 +13,14 @@ class Main extends Component {
           <Route
             path="/main/:id"
             render={props => {
-              return <Climb climbs={this.props} {...props} />;
+              return (
+                <Climb
+                  climbs={this.props}
+                  lat={this.props.lat}
+                  lng={this.props.lng}
+                  {...props}
+                />
+              );
             }}
           />
           <Route
@@ -22,7 +29,12 @@ class Main extends Component {
               return (
                 <div>
                   <div id="map">
-                    <Simple_Map climbs={this.props.climbs} {...props} />
+                    <Simple_Map
+                      climbs={this.props.climbs}
+                      lat={this.props.lat}
+                      lng={this.props.lng}
+                      {...props}
+                    />
                   </div>
                   <br />
                   <Table props={this.props} />

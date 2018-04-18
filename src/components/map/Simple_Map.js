@@ -4,20 +4,18 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 class Simple_Map extends Component {
   state = {
-    lat: 40.03,
-    lng: -105.25,
+    lat: this.props.lat,
+    lng: this.props.lng,
     zoom: 10
   };
 
   render() {
-    console.log("hello", this.props.climbs.routes);
-    const position = [this.state.lat, this.state.lng];
+    const position = [this.props.lat, this.props.lng];
     let climbPosition = this.props.climbs.routes.map(climb => [
       climb.latitude,
       climb.longitude,
       climb.name
     ]);
-    console.log(climbPosition);
     let marker = climbPosition.map((climb, i) => {
       var climbLocation = [climb[0], climb[1]];
       return (

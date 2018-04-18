@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import Searchbar from "../searchbar/Searchbar";
 
 class Header extends Component {
   render() {
@@ -21,7 +20,6 @@ class Header extends Component {
           <Link to="/main" className="nav">
             Home
           </Link>
-          <Searchbar />
         </div>
       );
     } else {
