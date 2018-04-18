@@ -22,7 +22,7 @@ class Main extends Component {
               return (
                 <div>
                   <div id="map">
-                    <Simple_Map />
+                    <Simple_Map climbs={this.props.climbs} {...props} />
                   </div>
                   <br />
                   <Table props={this.props} />

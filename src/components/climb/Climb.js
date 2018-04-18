@@ -1,36 +1,26 @@
 import React, { Component } from "react";
-import Axios from "axios";
-import API_KEY from "../../config/Config";
+import "./Climb.css";
+import ClimbMap from "../climbmap/ClimbMap";
 class Climb extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      setId: this.props.match.params.id,
-      climb: []
-    };
-  }
-
-  componentDidMount() {
-    Axios.get(
-      "https://www.mountainproject.com/data/get-routes?routeIds=" +
-        this.state.setId +
-        "&key=" +
-        API_KEY
-    )
-      .then(response => {
-        this.setState({
-          climb: response.data
-        });
-      })
-      .catch(err => console.log(err));
-  }
-
   render() {
-    console.log(this.state.setId);
-    console.log(this.state.climb);
+    console.log(this.props.climbs.climbs.routes);
+    const climb = this.props.climbs.climbs.routes.find(
+      climb => climb.id === parseInt(this.props.match.params.id)
+    );
     return (
-      <div>
-        <h1>Hello World</h1>
+      <div className="climb-container">
+        <h1 className="climb">{climb.name}</h1>
+        <br />
+        <div className="climb-map-container">
+          <ClimbMap
+            climbLat={climb.latitude}
+            climbLon={climb.longitude}
+            climbName={climb.name}
+          />
+          <button>Drive</button>
+        </div>
+        <br />
+        <img className="mediumImage" src={climb.imgMedium} />
       </div>
     );
   }
