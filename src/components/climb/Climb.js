@@ -7,13 +7,17 @@ class Climb extends Component {
   componentDidMount() {
     axios
       .get(
-        "http://www.mapquestapi.com/geocoding/v1/reverse?key=" +
+        "http://www.mapquestapi.com/directions/v2/route?key=" +
           MQ_API_KEY +
-          "&location=" +
+          "&from=" +
+          this.props.lat +
+          "%2C+" +
+          this.props.lng +
+          "&to=" +
           this.props.climbs.climbs.routes[0].latitude +
-          "," +
+          "%2C+" +
           this.props.climbs.climbs.routes[0].longitude +
-          "&includeRoadMetadata=true&includeNearestIntersection=true"
+          "&outFormat=json&ambiguities=ignore&routeType=fastest&doReverseGeocode=true&enhancedNarrative=false&avoidTimedConditions=false"
       )
       .then(response => {
         console.log(response.data);

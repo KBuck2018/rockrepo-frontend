@@ -7,20 +7,12 @@ import { Link } from "react-router-dom";
 class Table extends Component {
   constructor() {
     super();
-    this.state;
   }
   render() {
     const data = this.props.props.climbs.routes;
-    // let climb = data.map((climb, index) => {
-    //   return (
-    //     <li key={index}>
-    //       <Link to={"/main/" + climb.id}>{climb.name}</Link>
-    //     </li>
-    //   );
-    // });
+
     return (
       <div className="table">
-        {/* {climb} */}
         <ReactTable
           data={data}
           columns={[

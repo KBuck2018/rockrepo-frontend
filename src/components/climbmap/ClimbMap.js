@@ -22,9 +22,7 @@ class ClimbMap extends Component {
         {/* <div>{marker}</div> */}
         <Marker position={position}>
           <Popup>
-            <span>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </span>
+            <span>My Location</span>
           </Popup>
         </Marker>
         <Marker position={climbPosition}>
