@@ -3,7 +3,11 @@ import "./Climb.css";
 import ClimbMap from "../climbmap/ClimbMap";
 import MQ_API_KEY from "../../config/Config2";
 import axios from "axios";
+
 class Climb extends Component {
+  state = {
+    directions: []
+  };
   componentDidMount() {
     axios
       .get(
@@ -20,11 +24,17 @@ class Climb extends Component {
           "&outFormat=json&ambiguities=ignore&routeType=fastest&doReverseGeocode=true&enhancedNarrative=false&avoidTimedConditions=false"
       )
       .then(response => {
-        console.log(response.data);
+        this.setState({
+          directions: response.data.route.legs[0].maneuvers
+        });
       });
   }
 
   render() {
+    let direction = this.state.directions.map((direction, i) => {
+      return <li key={i}> {direction.narrative} </li>;
+    });
+
     const climb = this.props.climbs.climbs.routes.find(
       climb => climb.id === parseInt(this.props.match.params.id)
     );
@@ -40,10 +50,25 @@ class Climb extends Component {
             climbLon={climb.longitude}
             climbName={climb.name}
           />
-          <button>Drive</button>
+          <img className="mediumImage" src={climb.imgMedium} />
         </div>
+        <button>Drive</button>
         <br />
-        <img className="mediumImage" src={climb.imgMedium} />
+        <div className="fact-container">
+          <div className="facts">
+            <p>{climb.name}</p>
+            <p>Climb Type - {climb.type}</p>
+            <p>Difficulty Level - {climb.rating}</p>
+            <p>Stars - {climb.stars}</p>
+            <p>Votes - {climb.starVotes}</p>
+            <p>Pitches - {climb.pitches}</p>
+            <a href={climb.url}>Link to more information </a>
+          </div>
+          <div className="facts">
+            <p>Directions</p>
+            {direction}
+          </div>
+        </div>
       </div>
     );
   }

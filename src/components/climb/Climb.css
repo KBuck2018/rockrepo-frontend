@@ -8,15 +8,47 @@
 
 .mediumImage {
   height: 300px;
-  width: 300px;
-  border: 2px solid black;
+  width: 480px;
+  border: 4px solid black;
+  margin-top: 10px;
 }
 
 .climb-map-container {
   width: 100%;
+  display: flex;
 }
 
 button {
   font-size: 18px;
   text-align: right;
+  margin-left: 40px;
+}
+
+.facts {
+  text-align: center;
+  font-family: "Special Elite";
+  border: 5px solid #080808;
+  border-style: groove;
+  box-sizing: content-box;
+  padding: 0px 50px 50px 50px;
+  color: #3f2314;
+  background: #f9faf9;
+  opacity: 0.8;
+  border-radius: 10px;
+  font-size: 1.5em;
+  display: fixed;
+  margin: 10px;
+  margin-left: 40px;
+}
+p {
+  margin: 10px;
+}
+
+li {
+  text-align: left;
+  margin: 0px;
+}
+
+.fact-container {
+  display: flex;
 }
