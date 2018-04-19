@@ -6,7 +6,8 @@ import axios from "axios";
 
 class Climb extends Component {
   state = {
-    directions: []
+    directions: [],
+    path: []
   };
   componentDidMount() {
     axios
@@ -25,6 +26,7 @@ class Climb extends Component {
       )
       .then(response => {
         this.setState({
+          path: response.data,
           directions: response.data.route.legs[0].maneuvers
         });
       });
