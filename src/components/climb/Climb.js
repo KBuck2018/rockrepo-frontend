@@ -33,6 +33,7 @@ class Climb extends Component {
   }
 
   render() {
+    console.log(this.state.path);
     let direction = this.state.directions.map((direction, i) => {
       return <li key={i}> {direction.narrative} </li>;
     });

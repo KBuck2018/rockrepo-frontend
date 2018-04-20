@@ -140,6 +140,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Switch>
         <div>
