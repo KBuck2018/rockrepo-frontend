@@ -8,6 +8,10 @@ class Header extends Component {
     if (this.props.isLoggedIn) {
       nav.push(
         <div key={1}>
+          <Searchbar
+            handleSearchInput={this.handleSearchInput}
+            handleSearch={this.handleSearch}
+          />
           <Link to="/main" className="logo">
             I Like Big Routes
           </Link>

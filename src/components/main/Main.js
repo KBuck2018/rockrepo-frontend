@@ -24,10 +24,6 @@ class Main extends Component {
               );
             }}
           />
-          <Searchbar
-            handleSearchInput={this.handleSearchInput}
-            handleSearch={this.handleSearch}
-          />
           <Route
             path="/main"
             render={props => {
