@@ -205,6 +205,10 @@ class App extends Component {
             render={props => {
               if (this.state.isLoggedIn === true) {
                 return (
+                  <Searchbar
+          handleSearchInput={this.handleSearchInput}
+          handleSearch={this.handleSearch}
+        />
                   <Main
                     climbs={this.state.climbs}
                     lat={this.state.lat}
