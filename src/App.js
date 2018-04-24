@@ -8,7 +8,6 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import API_KEY from "./config/Config";
 import Main from "./components/main/Main";
-import Searchbar from "./components/searchbar/Searchbar";
 import MQ_API_KEY from "./config/Config2";
 
 class App extends Component {

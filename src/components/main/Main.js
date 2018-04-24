@@ -4,6 +4,7 @@ import Simple_Map from "../map/Simple_Map";
 import "./Main.css";
 import { Switch, Route } from "react-router-dom";
 import Climb from "../climb/Climb";
+import Searchbar from "./searchbar/Searchbar";
 
 class Main extends Component {
   render() {
