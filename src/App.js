@@ -150,10 +150,6 @@ class App extends Component {
               email={this.state.email}
             />
           </nav>
-          <Searchbar
-            handleSearchInput={this.handleSearchInput}
-            handleSearch={this.handleSearch}
-          />
           <Route
             path="/signup"
             render={props => {

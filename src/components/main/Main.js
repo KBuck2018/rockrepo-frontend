@@ -9,6 +9,10 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
+        <Searchbar
+          handleSearchInput={this.handleSearchInput}
+          handleSearch={this.handleSearch}
+        />
         <Switch>
           <Route
             path="/main/:id"
