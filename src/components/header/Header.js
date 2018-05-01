@@ -8,19 +8,15 @@ class Header extends Component {
     if (this.props.isLoggedIn) {
       nav.push(
         <div key={1}>
-          <Searchbar
-            handleSearchInput={this.handleSearchInput}
-            handleSearch={this.handleSearch}
-          />
           <Link to="/main" className="logo">
             I Like Big Routes
           </Link>
           <Link to="/logout" className="nav">
             Logout
           </Link>
-          <Link to="/profile" className="nav">
+          {/* <Link to="/profile" className="nav">
             {this.props.email}
-          </Link>
+          </Link> */}
           <Link to="/main" className="nav">
             Home
           </Link>

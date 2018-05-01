@@ -208,6 +208,9 @@ class App extends Component {
                     climbs={this.state.climbs}
                     lat={this.state.lat}
                     lng={this.state.lng}
+                    handleSearchInput={this.handleSearchInput}
+                    handleSearch={this.handleSearch}
+                    redirect={this.state.redirect}
                   />
                 );
               } else {
