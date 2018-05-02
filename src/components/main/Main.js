@@ -33,7 +33,7 @@ class Main extends Component {
             path="/main"
             render={props => {
               return (
-                <div>
+                <div className="mainContainer">
                   <div id="map">
                     <Simple_Map
                       climbs={this.props.climbs}
