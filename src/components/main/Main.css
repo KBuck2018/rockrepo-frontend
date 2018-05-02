@@ -1,7 +1,7 @@
 .main {
   background-image: url("/images/andreas-fidler.jpg");
-  background-size: 40%;
+  background-size: 38%;
+  background-position: right;
   background-repeat: no-repeat;
-  background-position-x: 850px;
-  background-position: fixed;
+  /* background-position-x: 850px; */
 }
