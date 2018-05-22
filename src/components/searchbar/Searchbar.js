@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class Searchbar extends Component {
   render() {
@@ -16,4 +17,4 @@ class Searchbar extends Component {
   }
 }
 
-export default Searchbar;
+export default withRouter(Searchbar);

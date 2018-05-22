@@ -4,3 +4,18 @@ body {
   background-color: blanchedalmond;
   margin: auto;
 }
+@media (min-width: 576px) {
+  width: 30%;
+}
+
+@media (min-width: 768px) {
+  width: 50%;
+}
+
+@media (min-width: 992px) {
+  width: 80%;
+}
+
+@media (min-width: 1200px) {
+  width: 100%;
+}
